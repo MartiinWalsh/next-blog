@@ -1,3 +1,4 @@
+"use client";
 /* eslint-disable @next/next/no-img-element */
 import { auth, db, signInWithGoogleFirebase } from "@/lib/firebase";
 import { useCallback, useContext, useEffect, useState } from "react";

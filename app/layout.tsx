@@ -1,19 +1,28 @@
-import Navbar from "@/components/Navbar";
+"use client";
+
+import Navbar from "../components/Navbar";
 import "@/styles/globals.css";
-import type { AppProps } from "next/app";
 import { Toaster } from "react-hot-toast";
 
 import { UserContext } from "@/lib/context";
 import { useUserData } from "@/lib/hooks";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const userData = useUserData();
 
   return (
     <UserContext.Provider value={userData}>
-      <Navbar />
-      <Component {...pageProps} />
-      <Toaster />
+      <html lang="en">
+        <body>
+          <Navbar />
+          {children}
+          <Toaster />
+        </body>
+      </html>
     </UserContext.Provider>
   );
 }
